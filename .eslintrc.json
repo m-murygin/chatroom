@@ -1,0 +1,42 @@
+{
+    "extends": "airbnb-base",
+    "plugins": [
+        "import",
+        "node"
+    ],
+    "env": {
+        "node": true,
+        "mocha": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "script",
+        "ecmaFeatures": {
+            "modules": false
+        }
+    },
+    "rules": {
+        "node/exports-style": ["error", "module.exports"],
+        "node/no-deprecated-api": "error",
+        "node/no-missing-require": "error",
+        "node/no-unsupported-features": "error",
+        "strict": ["error", "global"],
+        "indent": ["error", 2, {
+            "SwitchCase": 1,
+            "VariableDeclarator": 1,
+            "outerIIFEBody": 1,
+            "MemberExpression": 1,
+            "FunctionDeclaration": {
+              "parameters": 1,
+              "body": 1
+            },
+            "FunctionExpression": {
+              "parameters": 1,
+              "body": 1
+            },
+            "CallExpression": {
+                "arguments": 1
+            }
+        }]
+    }
+}
