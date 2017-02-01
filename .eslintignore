@@ -1,9 +1,3 @@
-migrations
 node_modules
-public
+public/components
 tmp
-tasktypes
-views
-misc
-coverage
-report
