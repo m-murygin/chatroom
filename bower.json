@@ -1,0 +1,14 @@
+{
+  "name": "chatroom",
+  "description": "chat room build with express.js",
+  "main": "app.js",
+  "authors": [
+    "Maksim Murygin"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/m-murygin/chatroom",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
+  }
+}

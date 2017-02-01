@@ -40,7 +40,7 @@
           "ignoreComments": false,
           "ignoreRegExpLiterals": true,
           "ignoreStrings": false,
-          "ignoreTemplateLiterals": true,
+          "ignoreTemplateLiterals": true
         }],
 
         "prefer-destructuring": "off",
