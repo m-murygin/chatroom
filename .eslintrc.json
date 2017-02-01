@@ -12,14 +12,11 @@
         "ecmaVersion": 6,
         "sourceType": "script",
         "ecmaFeatures": {
-            "modules": false
+            "modules": false,
+            "generators": false
         }
     },
     "rules": {
-        "node/exports-style": ["error", "module.exports"],
-        "node/no-deprecated-api": "error",
-        "node/no-missing-require": "error",
-        "node/no-unsupported-features": "error",
         "strict": ["error", "global"],
         "indent": ["error", 2, {
             "SwitchCase": 1,
@@ -37,6 +34,26 @@
             "CallExpression": {
                 "arguments": 1
             }
-        }]
+        }],
+        "max-len": ["error", 95, 2, {
+          "ignoreUrls": true,
+          "ignoreComments": false,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": false,
+          "ignoreTemplateLiterals": true,
+        }],
+
+        "prefer-destructuring": "off",
+        "prefer-rest-params": "off",
+        "prefer-spread": "off",
+        "rest-spread-spacing": "off",
+        "symbol-description": "off",
+        "sort-imports": "off",
+        "yield-star-spacing": "off",
+
+        "node/exports-style": ["error", "module.exports"],
+        "node/no-deprecated-api": "error",
+        "node/no-missing-require": "error",
+        "node/no-unsupported-features": "error"
     }
 }
