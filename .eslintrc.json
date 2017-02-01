@@ -42,6 +42,7 @@
           "ignoreStrings": false,
           "ignoreTemplateLiterals": true
         }],
+        "no-console": "off",
 
         "prefer-destructuring": "off",
         "prefer-rest-params": "off",
