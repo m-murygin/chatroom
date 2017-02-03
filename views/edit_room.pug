@@ -1,13 +1,13 @@
 extend layout
 
 block content
-  h1 Create a new chat room
+  h1 Edit chat room
 
   form(method='POST')
     fieldset.form-group
       label(for='name') Name:
-      input.form-control(type='text', placeholder='Enter a name', name='name')
+      input.form-control(type='text', placeholder='Enter a name', name='name' value=room.name)
       small.text-muted Give you chat room a meninful name for people to refer to it
 
-    button.btn.btn-primary(type='submit') Create new chat room
+    button.btn.btn-primary(type='submit') Save
     a.btn.btn-default(href='/admin/rooms') Cancel

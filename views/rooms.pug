@@ -2,6 +2,7 @@ extend layout
 
 block content
   h1 Chat room
+  a.btn.btn-primary(href='/admin/rooms/add') Create a new chat room
   table.table.table-stripped
     thead
       tr
@@ -12,3 +13,9 @@ block content
         tr
           td= room.name
           td= room.id
+          td.icon-cell
+            a(href='/admin/rooms/edit/' + room.id)
+              span.glyphicon.glyphicon-pencil
+          td.icon-cell
+            a(href='/admin/rooms/delete/' + room.id)
+              span.glyphicon.glyphicon-remove
