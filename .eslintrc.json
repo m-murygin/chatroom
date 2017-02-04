@@ -35,7 +35,7 @@
                 "arguments": 1
             }
         }],
-        "max-len": ["error", 95, 2, {
+        "max-len": ["error", 80, 2, {
           "ignoreUrls": true,
           "ignoreComments": false,
           "ignoreRegExpLiterals": true,

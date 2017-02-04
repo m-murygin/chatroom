@@ -32,7 +32,8 @@ router.get('/rooms/edit/:id', (req, res) => {
   const room = _.find(rooms, { id: req.params.id });
 
   if (!room) {
-    return res.sendStatus(404);
+    res.sendStatus(404);
+    return;
   }
 
   res.render('edit_room', {
@@ -45,7 +46,8 @@ router.post('/rooms/edit/:id', (req, res) => {
   const room = _.find(rooms, { id: req.params.id });
 
   if (!room) {
-    return res.sendStatus(404);
+    res.sendStatus(404);
+    return;
   }
 
   const newName = req.body.name;

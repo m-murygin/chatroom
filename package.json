@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "watch": "nodemon -e js,pug,html app.js",
+    "watch": "nodemon -e js,pug,css app.js",
     "postinstall": "bower install"
   },
   "author": "Maksim Murygin",
