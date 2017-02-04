@@ -42,7 +42,9 @@
           "ignoreStrings": false,
           "ignoreTemplateLiterals": true
         }],
-        "no-console": "off",
+        "no-param-reassign": ["error", {
+            "props": false
+        }],
 
         "prefer-destructuring": "off",
         "prefer-rest-params": "off",
