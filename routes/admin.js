@@ -13,20 +13,21 @@ router.get('/rooms', (req, res) => {
   });
 });
 
-router.get('/rooms/add', (req, res) => {
-  res.render('add_room', { title: 'add room' });
-});
+router
+  .route('/rooms/add')
+  .get((req, res) => {
+    res.render('add_room', { title: 'add room' });
+  })
+  .post((req, res) => {
+    const room = {
+      name: req.body.name,
+      id: uuidV4(),
+    };
 
-router.post('/rooms/add', (req, res) => {
-  const room = {
-    name: req.body.name,
-    id: uuidV4(),
-  };
+    rooms.push(room);
 
-  rooms.push(room);
-
-  res.redirect('/admin/rooms');
-});
+    res.redirect(`${req.baseUrl}/rooms`);
+  });
 
 router.get('/rooms/edit/:id', (req, res) => {
   const room = _.find(rooms, { id: req.params.id });
@@ -54,13 +55,13 @@ router.post('/rooms/edit/:id', (req, res) => {
 
   room.name = newName;
 
-  res.redirect('/admin/rooms');
+  res.redirect(`${req.baseUrl}/rooms`);
 });
 
 router.get('/rooms/delete/:id', (req, res) => {
   _.remove(rooms, { id: req.params.id });
 
-  res.redirect('/admin/rooms');
+  res.redirect(`${req.baseUrl}/rooms`);
 });
 
 module.exports = router;
