@@ -29,34 +29,30 @@ router
     res.redirect(`${req.baseUrl}/rooms`);
   });
 
-router.get('/rooms/edit/:id', (req, res) => {
-  const room = _.find(rooms, { id: req.params.id });
+router.route('/rooms/edit/:id')
+  .all((req, res, next) => {
+    const room = _.find(rooms, { id: req.params.id });
 
-  if (!room) {
-    res.sendStatus(404);
-    return;
-  }
+    if (!room) {
+      res.sendStatus(404);
+      return;
+    }
 
-  res.render('edit_room', {
-    room,
-    title: 'Edit Room',
+    res.locals.room = room;
+    next();
+  })
+  .get((req, res) => {
+    res.render('edit_room', {
+      title: 'Edit Room',
+    });
+  })
+  .post((req, res) => {
+    const newName = req.body.name;
+
+    res.locals.room.name = newName;
+
+    res.redirect(`${req.baseUrl}/rooms`);
   });
-});
-
-router.post('/rooms/edit/:id', (req, res) => {
-  const room = _.find(rooms, { id: req.params.id });
-
-  if (!room) {
-    res.sendStatus(404);
-    return;
-  }
-
-  const newName = req.body.name;
-
-  room.name = newName;
-
-  res.redirect(`${req.baseUrl}/rooms`);
-});
 
 router.get('/rooms/delete/:id', (req, res) => {
   _.remove(rooms, { id: req.params.id });
