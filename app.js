@@ -5,8 +5,11 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const log = require('./modules/logger.js');
-const adminRoutes = require('./routes/admin.js');
+
 const reponseTime = require('./middlewares/reponse-time.js');
+const homeRouter = require('./routes/home.js');
+const adminRouter = require('./routes/admin.js');
+const apiRouter = require('./routes/api.js');
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
@@ -22,11 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use('/admin', adminRoutes);
-
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Home' });
-});
+app.use('/', homeRouter);
+app.use('/admin', adminRouter);
+app.use('/api', apiRouter);
 
 app.listen(8080, () => {
   log.info('Example app listening on port 8080!');

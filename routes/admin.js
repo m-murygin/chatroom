@@ -4,7 +4,7 @@ const router = require('express').Router();
 const _ = require('lodash');
 const uuidV4 = require('uuid/v4');
 
-const rooms = require('../data/room.json');
+const rooms = require('../data/rooms.json');
 
 router.get('/rooms', (req, res) => {
   res.render('rooms', {
