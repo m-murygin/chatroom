@@ -2,11 +2,11 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 const app = express();
-const log = require('./modules/logger.js');
 
-const reponseTime = require('./middlewares/reponse-time.js');
+const log = require('./modules/logger.js');
 const homeRouter = require('./routes/home.js');
 const adminRouter = require('./routes/admin.js');
 const apiRouter = require('./routes/api.js');
@@ -19,7 +19,7 @@ app.set('views', 'views');
 // add static files middleware
 app.use(express.static('public'));
 
-app.use(reponseTime);
+app.use(morgan('dev'));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
