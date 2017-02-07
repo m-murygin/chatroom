@@ -48,7 +48,7 @@ $(function onLoad() {
   });
 
   $('#delete').click(() => {
-    fetch(`/api/rooms/${roomId}/messages`, { type: 'DELETE' })
+    fetch(`/api/rooms/${roomId}/messages`, { method: 'DELETE' })
       .then(() => $messages.val(''));
   });
 

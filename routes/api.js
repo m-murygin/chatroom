@@ -11,29 +11,37 @@ router.get('/rooms/', (req, res) => {
   res.json(rooms);
 });
 
-router.post('/rooms/:roomId/messages', (req, res) => {
-  const roomId = req.params.roomId;
+router
+  .route('/rooms/:roomId/messages')
+  .get((req, res) => {
+    const roomId = req.params.roomId;
+    const room = _.find(rooms, { id: roomId });
+    const roomMessages = _.filter(messages, { roomId });
 
-  const newMessage = {
-    roomId,
-    text: req.body.message,
-    id: uuidV4(),
-  };
+    res.json({
+      room,
+      messages: roomMessages,
+    });
+  })
+  .post((req, res) => {
+    const roomId = req.params.roomId;
 
-  messages.push(newMessage);
+    const newMessage = {
+      roomId,
+      text: req.body.message,
+      id: uuidV4(),
+    };
 
-  res.sendStatus(200);
-});
+    messages.push(newMessage);
 
-router.get('/rooms/:roomId/messages', (req, res) => {
-  const roomId = req.params.roomId;
-  const room = _.find(rooms, { id: roomId });
-  const roomMessages = _.filter(messages, { roomId });
+    res.sendStatus(200);
+  })
+  .delete((req, res) => {
+    const roomId = req.params.roomId;
 
-  res.json({
-    room,
-    messages: roomMessages,
+    _.remove(messages, { roomId });
+
+    res.sendStatus(200);
   });
-});
 
 module.exports = router;

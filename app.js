@@ -11,6 +11,8 @@ const homeRouter = require('./routes/home.js');
 const adminRouter = require('./routes/admin.js');
 const apiRouter = require('./routes/api.js');
 
+const PORT = process.env.PORT || 3000;
+
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
@@ -29,6 +31,6 @@ app.use('/', homeRouter);
 app.use('/admin', adminRouter);
 app.use('/api', apiRouter);
 
-app.listen(8080, () => {
-  log.info('Example app listening on port 8080!');
+app.listen(PORT, () => {
+  log.info(`Chat room app listening on port ${PORT}!`);
 });
