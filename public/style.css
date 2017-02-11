@@ -5,3 +5,7 @@ body {
 .icon-cell {
   width: 50px
 }
+
+.labeled-icon {
+  margin-right: 6px;
+}
