@@ -24,10 +24,21 @@ html(lang='en')
             li
               a(href='/admin/rooms') Admin
           ul.nav.navbar-nav.navbar-right
-            li
-              a(href='#')
-                span.glyphicon.glyphicon-user.labeled-icon
-                = user ? user.name : 'unknown'
+            if user
+              li
+                a(href='#')
+                  span.glyphicon.glyphicon-user.labeled-icon
+                  = user ? user.name : 'unknown'
+              li
+                a(href='/logout')
+                  span.glyphicon.glyphicon-log-out.labeled-icon
+                  | Logout
+            else
+              li
+                a(href='/login')
+                  span.glyphicon.glyphicon-log-in.labeled-icon
+                  | Login
+
     .container
       .main-content
         block content
