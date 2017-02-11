@@ -3,30 +3,42 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-
-const app = express();
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+const passport = require('passport');
 
 const log = require('./modules/logger.js');
 const homeRouter = require('./routes/home.js');
 const adminRouter = require('./routes/admin.js');
 const apiRouter = require('./routes/api.js');
+const authRouter = require('./routes/auth.js');
+require('./modules/passport-init.js');
 
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
-// add static files middleware
 app.use(express.static('public'));
 
 app.use(morgan('dev'));
-
-// parse application/x-www-form-urlencoded
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
 app.use(bodyParser.json());
 
+app.use(expressSession({
+  secret: 'i2orX2Cv',
+  cookie: {
+    maxAge: 60000,
+  },
+  resave: true,
+  saveUninitialized: true,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/', authRouter);
 app.use('/', homeRouter);
 app.use('/admin', adminRouter);
 app.use('/api', apiRouter);
