@@ -1,0 +1,22 @@
+{
+  "disallowAttributeConcatenation": true,
+  "disallowAttributeInterpolation": true,
+  "disallowBlockExpansion": true,
+  "disallowDuplicateAttributes": true,
+  "disallowIdAttributeWithStaticValue": true,
+  "disallowLegacyMixinCall": true,
+  "disallowMultipleLineBreaks": true,
+  "disallowSpacesInsideAttributeBrackets": true,
+  "requireLineFeedAtFileEnd": true,
+  "requireLowerCaseAttributes": true,
+  "requireLowerCaseTags": true,
+  "requireSpaceAfterCodeOperator": true,
+  "requireSpecificAttributes": [
+    { "img": "alt" },
+    { "input": "type" }
+  ],
+  "requireStrictEqualityOperators": true,
+  "validateDivTags": true,
+  "validateExtensions": true,
+  "validateIndentation": 2
+}

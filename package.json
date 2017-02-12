@@ -10,6 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
+    "puglint": "pug-lint views/",
     "watch": "nodemon -e js,pug,css app.js",
     "postinstall": "bower install",
     "start": "node app.js"
@@ -21,7 +22,8 @@
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-node": "^3.0.5",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "pug-lint": "^2.4.0"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
