@@ -1,5 +1,4 @@
 {
-  "disallowAttributeConcatenation": true,
   "disallowAttributeInterpolation": true,
   "disallowBlockExpansion": true,
   "disallowDuplicateAttributes": true,
@@ -17,6 +16,6 @@
   ],
   "requireStrictEqualityOperators": true,
   "validateDivTags": true,
-  "validateExtensions": true,
+  "validateSelfClosingTags": true,
   "validateIndentation": 2
 }
