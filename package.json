@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "puglint": "pug-lint views/",
+    "puglint": "pug-lint -c .puglintrc.json views/",
     "watch": "nodemon -e js,pug,css,json app.js",
     "postinstall": "bower install",
     "start": "node app.js"
