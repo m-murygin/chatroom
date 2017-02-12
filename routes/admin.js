@@ -6,6 +6,15 @@ const uuidV4 = require('uuid/v4');
 
 const rooms = require('../data/rooms.json');
 
+router.use((req, res, next) => {
+  if (req.user.isAdmin) {
+    next();
+    return;
+  }
+
+  res.sendStatus(403);
+});
+
 router.get('/rooms', (req, res) => {
   res.render('rooms', {
     rooms,

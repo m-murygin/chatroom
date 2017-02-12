@@ -5,7 +5,10 @@ $(function onLoad() {
   const $messages = $('#messages');
   let roomId;
 
-  fetch('/api/rooms')
+  fetch('/api/rooms',
+    {
+      credentials: 'include',
+    })
     .then(Helpers.checkResponseStatus)
     .then(Helpers.getResponseJSON)
     .then(rooms => {
@@ -34,6 +37,7 @@ $(function onLoad() {
           'Content-Type': 'application/json',
         }),
         body: JSON.stringify({ message }),
+        credentials: 'include',
       })
       .then(() => {
         $message.val('');
@@ -48,12 +52,19 @@ $(function onLoad() {
   });
 
   $('#delete').click(() => {
-    fetch(`/api/rooms/${roomId}/messages`, { method: 'DELETE' })
+    fetch(`/api/rooms/${roomId}/messages`,
+      {
+        method: 'DELETE',
+        credentials: 'include',
+      })
       .then(() => $messages.val(''));
   });
 
   function getMessages() {
-    return fetch(`/api/rooms/${roomId}/messages`)
+    return fetch(`/api/rooms/${roomId}/messages`,
+      {
+        credentials: 'include',
+      })
       .then(Helpers.checkResponseStatus)
       .then(Helpers.getResponseJSON)
       .then(data => {

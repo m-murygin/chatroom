@@ -38,11 +38,17 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
-  res.locals.user = req.user;
-  next();
-});
 app.use('/', authRouter);
+
+app.use((req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.locals.user = req.user;
+    next();
+    return;
+  }
+  res.redirect('/login');
+});
+
 app.use('/', homeRouter);
 app.use('/admin', adminRouter);
 app.use('/api', apiRouter);
