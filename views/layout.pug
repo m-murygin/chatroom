@@ -8,6 +8,8 @@ html(lang='en')
     link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='/style.css')
   body
+    block global_values
+
     nav.navbar.navbar-inverse.navbar-fixed-top
       .container
         .navbar-header
@@ -19,9 +21,9 @@ html(lang='en')
           a.navbar-brand(href='/') Chat room
         #navbar.navbar-collapse.collapse
           ul.nav.navbar-nav
-            li.active
+            li(class=currentTab === 'home' ? 'active' : '')
               a(href='/') Home
-            li
+            li(class=currentTab === 'admin' ? 'active' : '')
               a(href='/admin/rooms') Admin
           ul.nav.navbar-nav.navbar-right
             if user

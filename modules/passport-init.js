@@ -26,13 +26,12 @@ passport.use(new LocalStrategy((username, password, done) => {
   done(null, user);
 }));
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser((id, done) => {
   const user = _.find(users, { id });
-  log.debug('deserialize', user);
 
   done(null, user);
 });
